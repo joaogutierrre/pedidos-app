@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/challenge.iml" filepath="$PROJECT_DIR$/.idea/challenge.iml" />
       <module fileurl="file://$PROJECT_DIR$/backend/pedido/pedido.iml" filepath="$PROJECT_DIR$/backend/pedido/pedido.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/pedido/pedido-poc-pedido.iml" filepath="$PROJECT_DIR$/backend/pedido/pedido-poc-pedido.iml" />
     </modules>
   </component>
 </project>
