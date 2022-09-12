@@ -64,4 +64,14 @@ public class PedidoController {
         pedidoModel.setDataPedido(pedidoModelOptional.get().getDataPedido());
         return ResponseEntity.status(HttpStatus.OK).body(pedidoService.save(pedidoModel));
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Object> deletePedido(@PathVariable(value = "id") UUID id){
+        Optional<PedidoModel> pedidoModelOptional = pedidoService.findPedidoById(id);
+        if(!pedidoModelOptional.isPresent()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pedido não encontrado!!!");
+        }
+        pedidoService.delete(pedidoModelOptional.get());
+        return ResponseEntity.status(HttpStatus.OK).body("O pedido referido foi deletado com sucesso!!!");
+    }
 }
