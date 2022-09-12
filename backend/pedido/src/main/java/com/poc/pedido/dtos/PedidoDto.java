@@ -3,19 +3,10 @@ package com.poc.pedido.dtos;
 import java.time.LocalDateTime;
 
 public class PedidoDto {
-//    public UUID id;
     private String cpf;
     private String descricao;
     private int qtdItens;
     private LocalDateTime datapedido;
-
-//    public UUID getId() {
-//        return id;
-//    }
-//
-//    public void setId(UUID id) {
-//        this.id = id;
-//    }
 
     public String getCpf() {
         return cpf;
