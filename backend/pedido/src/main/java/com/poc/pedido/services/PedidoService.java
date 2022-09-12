@@ -33,7 +33,6 @@ public class PedidoService {
     public boolean existsBydatapedido(LocalDateTime datapedido) {
         return pedidoRepository.existsBydatapedido(datapedido);
     }
-
     @Transactional
     public PedidoModel save(PedidoModel pedidoModel) {
         return pedidoRepository.save(pedidoModel);

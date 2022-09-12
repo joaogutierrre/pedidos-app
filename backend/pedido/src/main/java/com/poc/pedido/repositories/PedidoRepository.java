@@ -10,6 +10,5 @@ import java.util.UUID;
 @Repository
 public interface PedidoRepository extends JpaRepository<PedidoModel, UUID> {
     boolean existsByCpf(String cpf);
-
     boolean existsBydatapedido(LocalDateTime datapedido);
 }

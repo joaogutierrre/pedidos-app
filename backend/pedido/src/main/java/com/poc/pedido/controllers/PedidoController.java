@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
@@ -48,5 +49,19 @@ public class PedidoController {
         BeanUtils.copyProperties(pedidoDto, pedidoModel);
         pedidoModel.setDataPedido(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(pedidoService.save(pedidoModel));
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Object> alteraPedido(@PathVariable(value = "id") UUID id, @RequestBody PedidoDto pedidoDto) {
+        Optional<PedidoModel> pedidoModelOptional = pedidoService.findPedidoById(id);
+        if (!pedidoModelOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pedido não encontrado!!!");
+        }
+
+        var pedidoModel = new PedidoModel();
+        BeanUtils.copyProperties(pedidoDto, pedidoModel);
+        pedidoModel.setId(pedidoModelOptional.get().getId());
+        pedidoModel.setDataPedido(pedidoModelOptional.get().getDataPedido());
+        return ResponseEntity.status(HttpStatus.OK).body(pedidoService.save(pedidoModel));
     }
 }
